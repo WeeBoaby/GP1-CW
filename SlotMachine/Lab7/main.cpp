@@ -326,7 +326,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				if(continueButton.insideRect(continueButton.getBoundingRect(), mouseXY) && bank > 0)
 				{
 					//inserts a new credit from bank, updates values and sets back to the game state
-										gButton.playSound(L"Sounds\\Button.wav",false);
+					gButton.playSound(L"Sounds\\Button.wav",false);
 					bank--;
 					sprintf_s( bankStr, 50, "Bank : %d", bank);
 					credits++;
@@ -344,7 +344,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				if(menuButton.insideRect(menuButton.getBoundingRect(), mouseXY))
 				{
 					//make sure to reset the credits etc when back to menu
-										gButton.playSound(L"Sounds\\Button.wav",false);
+					gButton.playSound(L"Sounds\\Button.wav",false);
 					ChangeStates(0);
 					bank = 0;
 					sprintf_s( bankStr, 50, "Bank : %d", bank);
@@ -363,7 +363,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					//change to the play state
 					//choose a fruit but DO NOT test if matched, we dont want to give the player credits
 					//makes the reels random every time at start
-										gButton.playSound(L"Sounds\\Button.wav",false);
+					gButton.playSound(L"Sounds\\Button.wav",false);
 					ChangeStates(1);
 					ChooseFruitForReels();
 				}
@@ -376,7 +376,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 #pragma endregion
 #pragma region keyboard buttons pressed
-		case WM_KEYDOWN:
+	case WM_KEYDOWN:
 		{
 #pragma region buttons for state 0
 
@@ -487,7 +487,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				if(wParam == 'P')
 				{
 					//inserts a new credit from bank, updates values and sets back to the game state
-										gButton.playSound(L"Sounds\\Button.wav",false);
+					gButton.playSound(L"Sounds\\Button.wav",false);
 					bank--;
 					sprintf_s( bankStr, 50, "Bank : %d", bank);
 					credits++;
@@ -505,7 +505,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				if(wParam == 'M')
 				{
 					//make sure to reset the credits etc when back to menu
-										gButton.playSound(L"Sounds\\Button.wav",false);
+					gButton.playSound(L"Sounds\\Button.wav",false);
 					ChangeStates(0);
 					bank = 0;
 					sprintf_s( bankStr, 50, "Bank : %d", bank);
@@ -524,7 +524,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					//change to the play state
 					//choose a fruit but DO NOT test if matched, we dont want to give the player credits
 					//makes the reels random every time at start
-										gButton.playSound(L"Sounds\\Button.wav",false);
+					gButton.playSound(L"Sounds\\Button.wav",false);
 					ChangeStates(1);
 					ChooseFruitForReels();
 				}
@@ -535,18 +535,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			buttonPressed = false;
 			return 0;
 		}
-				case WM_CLOSE:
-			{
+	case WM_CLOSE:
+		{
 			// Exit the Game
-				PostQuitMessage(0);
-				 return 0;
-			}
+			PostQuitMessage(0);
+			return 0;
+		}
 
-		case WM_DESTROY:
-			{
-				PostQuitMessage(0);
-				return 0;
-			}
+	case WM_DESTROY:
+		{
+			PostQuitMessage(0);
+			return 0;
+		}
 #pragma endregion
 	}
 	// Always return the message to the default window
@@ -689,7 +689,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLi
 	D3DXVECTOR3 menuPos;
 #pragma endregion
 
-	#pragma region create vector3s for help screen
+#pragma region create vector3s for help screen
 	//buttons positions for the help screen
 	D3DXVECTOR3 startPos;
 #pragma endregion
@@ -840,7 +840,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLi
 	menuSurface = d3dMgr->getD3DSurfaceFromFile("Images\\MenuBG.png");
 	// Create the background surface for game over
 	quitSurface = d3dMgr->getD3DSurfaceFromFile("Images\\GameOver.png");
-		// Create the background surface for help screen
+	// Create the background surface for help screen
 	helpSurface = d3dMgr->getD3DSurfaceFromFile("Images\\HelpScreen.png");
 
 #pragma endregion
@@ -909,35 +909,35 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLi
 					unholdButton.update(timeElapsed);
 					matchMarker.update(timeElapsed);
 
-					
-				//always update the moving and colliding sprites, but only draw them when needed
-				for(iter = colFruit.begin(); iter != colFruit.end(); ++iter)
-				{
-					if(currState == 1 && (reel1Fruit == reel2Fruit && reel1Fruit == reel3Fruit))
+
+					//always update the moving and colliding sprites, but only draw them when needed
+					for(iter = colFruit.begin(); iter != colFruit.end(); ++iter)
 					{
-						(*iter)->update(timeElapsed);			// update balloon
-						afruitPos = (*iter)->getSpritePos();  // get the position of the current balloon
-
-						//Check for boundry collision and change the sprite direction
-						if (afruitPos.x > (clientBounds.right + 100) || (afruitPos.x < clientBounds.left - 100))
+						if(currState == 1 && (reel1Fruit == reel2Fruit && reel1Fruit == reel3Fruit))
 						{
-							OutputDebugString("Collision!!");
-							(*iter)->setTranslation((*iter)->getTranslation()*(-1));
-						}
+							(*iter)->update(timeElapsed);			// update balloon
+							afruitPos = (*iter)->getSpritePos();  // get the position of the current balloon
 
-						//Check each against each other for collisions		
-						for(index = colFruit.begin(); index != colFruit.end(); ++index)
-						{
-							if ((*iter)->collidedWith((*iter)->getBoundingRect(),(*index)->getBoundingRect()))
+							//Check for boundry collision and change the sprite direction
+							if (afruitPos.x > (clientBounds.right + 100) || (afruitPos.x < clientBounds.left - 100))
 							{
-								// if a collision occurs change the direction of the sprite that has collided
 								OutputDebugString("Collision!!");
 								(*iter)->setTranslation((*iter)->getTranslation()*(-1));
-								(*index)->setTranslation((*index)->getTranslation()*(-1));
+							}
+
+							//Check each against each other for collisions		
+							for(index = colFruit.begin(); index != colFruit.end(); ++index)
+							{
+								if ((*iter)->collidedWith((*iter)->getBoundingRect(),(*index)->getBoundingRect()))
+								{
+									// if a collision occurs change the direction of the sprite that has collided
+									OutputDebugString("Collision!!");
+									(*iter)->setTranslation((*iter)->getTranslation()*(-1));
+									(*index)->setTranslation((*index)->getTranslation()*(-1));
+								}
 							}
 						}
 					}
-				}
 
 				}
 				//only update the continue screen stuff, prevents player pressing spin button when not able
@@ -1074,12 +1074,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLi
 				//only draw the bouncy thingys if there is a 3 match currently
 				if(currState == 1 && (reel1Fruit == reel2Fruit && reel1Fruit == reel3Fruit))
 				{
-				vector<cFruit*>::iterator iterB = colFruit.begin();
-				for(iterB = colFruit.begin(); iterB != colFruit.end(); ++iterB)
-				{
+					vector<cFruit*>::iterator iterB = colFruit.begin();
+					for(iterB = colFruit.begin(); iterB != colFruit.end(); ++iterB)
+					{
 						d3dxSRMgr->setTheTransform((*iterB)->getSpriteTransformMatrix());  
 						d3dxSRMgr->drawSprite((*iterB)->getTexture(),NULL,NULL,NULL,0xFFFFFFFF);
-				}
+					}
 				}
 
 				d3dxSRMgr->endDraw();
@@ -1143,7 +1143,7 @@ void CheckIfFruitMatch()
 #pragma region 2 reels match
 	if (reel1Fruit == reel2Fruit && reel1Fruit != reel3Fruit)
 	{
-							gFanfare.playSound(L"Sounds\\Fanfare.wav",false);
+		gFanfare.playSound(L"Sounds\\Fanfare.wav",false);
 		//if apples
 		if (reel1Fruit ==0)
 		{
@@ -1268,7 +1268,7 @@ void DrawMyButtons()
 		d3dxSRMgr->drawSprite(menuButton.getTexture(),NULL,NULL,NULL,0xFFFFFFFF);
 	}
 
-		if (currState == 4)
+	if (currState == 4)
 	{
 		//draw the play game button
 		d3dxSRMgr->setTheTransform(playButton.getSpriteTransformMatrix());
