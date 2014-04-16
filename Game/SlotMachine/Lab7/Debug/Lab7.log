@@ -1,0 +1,19 @@
+﻿Build started 16/04/2014 15:52:47.
+     1>Project "F:\GitHub\GP1-CW\Game\SlotMachine\Lab7\Lab7.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\SlotMachine.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       ResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         Lab7.vcxproj -> F:\GitHub\GP1-CW\Game\SlotMachine\Debug\SlotMachine.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\SlotMachine.unsuccessfulbuild".
+         Touching "Debug\SlotMachine.lastbuildstate".
+     1>Done Building Project "F:\GitHub\GP1-CW\Game\SlotMachine\Lab7\Lab7.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05
